@@ -11,5 +11,9 @@ models:
     description: "Oliver Product Dimension"
   - name: oliver_dim_store
     description: "Oliver Store Dimension"
+  - name: stg_employee_certifications
+    description: "Oliver Employee Certifications"
   - name: fact_sales
     description: "Oliver Sales Fact"
+  - name: fact_certification
+    description: "Oliver Certification fact"
