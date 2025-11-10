@@ -5,15 +5,45 @@ models:
     description: "Oliver Employee Dimension"
   - name: oliver_dim_customer
     description: "Oliver Customer Dimension"
+    columns:
+      - name: customer_id
+        tests:
+          - unique
   - name: oliver_dim_date
     description: "Oliver Date Dimension"
+    columns:
+      - name: date_day
+        description: "The date"
+        tests:
+          - not_null
   - name: oliver_dim_product
     description: "Oliver Product Dimension"
   - name: oliver_dim_store
     description: "Oliver Store Dimension"
   - name: stg_employee_certifications
     description: "Oliver Employee Certifications"
+    columns:
+      - name: certification_name
+        tests:
+          - accepted_values:
+              values:
+                - "Product Knowledge Level 2"
+                - "Point of Sale Operations"
+                - "Conflict Resolution"
+                - "Leadership and Coaching"
+                - "Inventory Management"
+                - "Cash Handling and Security"
+                - "Conflict Resolution"
+                - "Strategic Retail Operations"
+                - "Customer Service Excellence"
+                - "Workplace Safety"
   - name: fact_sales
     description: "Oliver Sales Fact"
+    columns:
+      - name: store_key
+        tests:
+          - relationships:
+              to: ref('oliver_dim_store')
+              field: store_key
   - name: fact_certification
     description: "Oliver Certification fact"
